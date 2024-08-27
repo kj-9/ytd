@@ -7,8 +7,8 @@ export default async (args: Args) => {
   console.log('Fetching playlist items...');
 
   const res = await playlistItems(
-    args._[0],
-    args._[1],
+    String(args._[0]),
+    String(args._[1]),
   );
   console.log(res);
 };

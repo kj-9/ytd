@@ -1,4 +1,4 @@
-function getRequestUrl(url, params) {
+function getRequestUrl(url: string, params: Record<string, any>): string {
   let requestUrl = url + '?';
   for (const p in params) {
     if (params[p] === null) {
@@ -12,8 +12,11 @@ function getRequestUrl(url, params) {
   return requestUrl;
 }
 
-export async function playlistItems(playlistId, apiKey) {
-  const params = {
+export async function playlistItems(
+  playlistId: string,
+  apiKey: string,
+): Promise<any[]> {
+  const params: { [key: string]: string | number | null } = {
     key: apiKey,
     part: 'contentDetails,id,snippet',
     playlistId,
@@ -24,8 +27,8 @@ export async function playlistItems(playlistId, apiKey) {
   const baseUrl = 'https://www.googleapis.com/youtube/v3/playlistItems';
   const init = { headers: { 'Accept': 'application/json' } };
 
-  let items = [];
-  let nextPageToken = true;
+  let items: any[] = [];
+  let nextPageToken = 'true';
 
   while (nextPageToken) {
     const requestUrl = getRequestUrl(baseUrl, params);
