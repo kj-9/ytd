@@ -13,7 +13,7 @@ function getRequestUrl(url, params) {
 }
 
 export async function playlistItems(playlistId, apiKey) {
-  let params = {
+  const params = {
     key: apiKey,
     part: 'contentDetails,id,snippet',
     playlistId,

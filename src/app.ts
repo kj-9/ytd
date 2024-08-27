@@ -1,4 +1,4 @@
-import { Args } from 'std/flags/mod.ts';
+import type { Args } from 'std/flags/mod.ts';
 import { playlistItems } from './lib/youtube.ts';
 
 //import { spinnerStart, spinnerSuccess, spinnerUpdate } from './lib/spinner.ts';
