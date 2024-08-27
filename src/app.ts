@@ -1,16 +1,14 @@
 import { Args } from 'std/flags/mod.ts';
+import { playlistItems } from './lib/youtube.ts';
 
-import { spinnerStart, spinnerSuccess, spinnerUpdate } from './lib/spinner.ts';
+//import { spinnerStart, spinnerSuccess, spinnerUpdate } from './lib/spinner.ts';
 
 export default async (args: Args) => {
-  spinnerStart('Starting....');
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  console.log('Fetching playlist items...');
 
-  spinnerUpdate('Updating...');
-  await new Promise((resolve) => setTimeout(resolve, 1500));
-
-  spinnerSuccess('Success');
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  console.log('Cli arguments: ', args);
+  const res = await playlistItems(
+    args._[0],
+    args._[1],
+  );
+  console.log(res);
 };

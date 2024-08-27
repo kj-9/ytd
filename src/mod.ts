@@ -7,7 +7,7 @@ import main from './app.ts';
 const help = `${AppName} ${Version}-${Platform}
 
 Usage:
-    ${AppName} [arg1] [arg2]
+    ${AppName} [playlistId] [apikey]
     ${AppName} (-h | --help)
     ${AppName} (-v | --version)
 
@@ -36,12 +36,4 @@ if (args._.includes('version') || args?.v || args?.version) {
   Deno.exit(0);
 }
 
-try {
-  await main(args);
-} catch (error) {
-  console.log(red(bold('!')), 'An error occurred!');
-
-  if (args?.debug) {
-    console.log(error);
-  }
-}
+await main(args);
