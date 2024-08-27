@@ -7,7 +7,7 @@ on:
 
 env:
   APP_NAME: 'ytd'
-  DENO_VERSION: '1.46'
+  DENO_VERSION: 'v1.46'
 
 jobs:
   build-artifact:
@@ -26,8 +26,7 @@ jobs:
       #    RELEASE_TAG=${GITHUB_REF#refs/*/}
       #    sed -i '' -e "s/export const Version.*/export const Version = '${RELEASE_TAG}';/g" src/constants.ts
       #    sed -i '' -e "s/export const Platform.*/export const Platform = '${{ runner.os }}';/g" src/constants.ts
-      - name: Build-${{ runner.os }}
-        uses: maximousblk/setup-deno@v2
+      - uses: denoland/setup-deno@v1
         with:
           deno-version: ${{ env.DENO_VERSION }}
       - run: |
