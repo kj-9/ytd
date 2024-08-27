@@ -4,9 +4,7 @@
   "description": "Youtube Data API CLI and library for Deno",
   "exports": "./src/mod.ts",
   "fmt": {
-    "options": {
-      "singleQuote": true
-    }
+    "singleQuote": true
   },
 
   "imports": {
