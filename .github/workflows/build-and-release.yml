@@ -5,6 +5,10 @@ on:
     tags:
       - '*'
 
+permissions:
+  packages: write
+  contents: write
+
 env:
   APP_NAME: 'ytd'
   DENO_VERSION: 'v1.46'
@@ -44,25 +48,24 @@ jobs:
       - build-artifact
     steps:
       - uses: actions/checkout@v3
-      - name: Create Release
-        id: create-release
-        uses: ncipollo/release-action@v1
+      - name: Create a Release
+        uses: elgohr/Github-Release-Action@v5
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          artifacts: "${{ env.APP_NAME }}_*"
-          body: "Release"
-          draft: false # TODO: check tag and if it is a pre-release or not
-          generateReleaseNotes: true
+          title: ${{ github.ref_name }}
+          tag: ${{ github.ref_name }}
+      # - name: Create Release
+      #   id: create-release
+      #   uses: ncipollo/release-action@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     artifacts: "${{ env.APP_NAME }}_*"
+      #     body: "Release"
+      #     draft: false # TODO: check tag and if it is a pre-release or not
+      #     generateReleaseNotes: true
 
-      - name: Write upload_url to file
-        run: echo '${{ steps.create-release.outputs.upload_url }}' > upload_url.txt
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: create-release
-          path: upload_url.txt
 
   upload-release:
     runs-on: ubuntu-latest
@@ -84,21 +87,23 @@ jobs:
         with:
           name: artifact-${{ matrix.os }}
 
-      - uses: actions/download-artifact@v3
+      - name: Upload binaries to release
+        uses: svenstaro/upload-release-action@v2
         with:
-          name: create-release
-
-      - id: vars
-        run: |
-          echo "::set-output name=upload_url::$(cat upload_url.txt)"
-
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.vars.outputs.upload_url }}
-          asset_path: ${{ env.APP_NAME }}_${{ matrix.os }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ${{ env.APP_NAME }}_${{ matrix.os }}
           asset_name: ${{ env.APP_NAME }}_${{ matrix.asset_name_suffix }}
-          asset_content_type: ${{ matrix.asset_content_type }}
+          tag: ${{ github.ref }}
+          overwrite: true
+          #body: 
+
+      # - name: Upload Release Asset
+      #   id: upload-release-asset
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.vars.outputs.upload_url }}
+      #     asset_path: ${{ env.APP_NAME }}_${{ matrix.os }}
+      #     asset_name: ${{ env.APP_NAME }}_${{ matrix.asset_name_suffix }}
+      #     asset_content_type: ${{ matrix.asset_content_type }}
