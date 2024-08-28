@@ -6,11 +6,9 @@
   "fmt": {
     "singleQuote": true
   },
-
   "imports": {
-    "std/": "https://deno.land/std@0.174.0/",
-    "wait/": "https://deno.land/x/wait@0.1.12/",
-    "cliffy/": "https://deno.land/x/cliffy@v0.25.7/"
+    "std/": "https://deno.land/std@0.224.0/",
+    "cliffy/": "https://deno.land/x/cliffy@v1.0.0-rc.4/"
   },
   "tasks": {
     "lint": "deno fmt --check",

@@ -1,8 +1,8 @@
 import config from '../deno.json' with { type: 'json' };
-import { Command } from 'https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts';
+import { Command } from 'cliffy/command/mod.ts';
 import main from './app.ts';
 
-import * as log from 'https://deno.land/std@0.224.0/log/mod.ts';
+import * as log from 'std/log/mod.ts';
 
 const { name, version, description } = config;
 
