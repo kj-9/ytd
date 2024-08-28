@@ -6,7 +6,7 @@ youtube data api cli tool and library for deno.
 
 **NOTE**: Before install this package, you should have this and that.
 
-- Download standalone binary from [releases](/releases).
+- Download standalone binary from [releases](https://github.com/kj-9/ytd/releases).
 - Move downloaded file to path
 - Or you can download source code and compile on your own.
 
