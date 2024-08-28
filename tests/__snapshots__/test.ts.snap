@@ -1,0 +1,22 @@
+export const snapshot = {};
+
+snapshot[`should log help 1`] = `
+stdout:
+"
+Usage:   ytd <playlistId> <apiKey>
+Version: 0.0.0-a1                 
+
+Description:
+
+  Youtube Data API CLI and library for Deno
+
+Options:
+
+  -h, --help     - Show this help.                            
+  -V, --version  - Show the version number for this program.  
+  -d, --debug    - Enable debug output.                       
+
+"
+stderr:
+""
+`;
