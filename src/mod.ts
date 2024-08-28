@@ -1,44 +1,31 @@
-import { parse } from 'std/flags/mod.ts';
-import { bold, green, yellow } from 'std/fmt/colors.ts';
 import config from '../deno.json' with { type: 'json' };
-
-const { name, version } = config;
-
+import { Command } from 'https://deno.land/x/cliffy@v1.0.0-rc.4/command/mod.ts';
 import main from './app.ts';
 
-const help = `${name} ${version}
+import * as log from 'https://deno.land/std@0.224.0/log/mod.ts';
 
-Usage:
-    ${name} [playlistId] [apikey]
-  list all videos in a youtube playlist
+const { name, version, description } = config;
 
-    ${name} (-h | --help)
-  show this help message
+await new Command()
+  .name(name)
+  .version(version)
+  .description(description)
+  .option('-d, --debug', 'Enable debug output.')
+  .arguments('<playlistId:string> <apiKey:string>')
+  .action(async (options, ...args) => {
+    log.setup({
+      handlers: {
+        console: new log.ConsoleHandler(options.debug ? 'DEBUG' : 'INFO'),
+      },
 
-    ${name} (-v | --version)
-  show version
+      loggers: {
+        'ytd': {
+          level: 'DEBUG',
+          handlers: ['console'],
+        },
+      },
+    });
 
-Options:
-    -h, --help       Print help
-    -v, --version    Print version
-`;
-
-const args = parse(Deno.args);
-
-if (args._.includes('help') || args?.h || args?.help) {
-  console.log(help);
-
-  Deno.exit(0);
-}
-
-if (args._.includes('version') || args?.v || args?.version) {
-  console.log(
-    green(bold(name)) +
-      ' ' +
-      yellow(version),
-  );
-
-  Deno.exit(0);
-}
-
-await main(args);
+    await main(options, args);
+  })
+  .parse(Deno.args);

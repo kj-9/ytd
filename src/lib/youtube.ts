@@ -1,3 +1,5 @@
+import logger from './logger.ts';
+
 function getRequestUrl(url: string, params: Record<string, any>): string {
   let requestUrl = url + '?';
   for (const p in params) {
@@ -32,7 +34,7 @@ export async function playlistItems(
 
   while (nextPageToken) {
     const requestUrl = getRequestUrl(baseUrl, params);
-    console.log(requestUrl);
+    logger().debug(requestUrl);
 
     const result = await fetch(requestUrl, init);
     const data = await result.json();
