@@ -9,4 +9,4 @@ jobs:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v1
       - name: Run CI
-        run: deno task fmt && deno task build
+        run: deno task lint && deno task test && deno task build

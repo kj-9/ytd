@@ -16,7 +16,7 @@
     "run": "deno run --allow-run --allow-env --allow-read --allow-net src/cli.ts",
     "build": "deno compile --allow-run --allow-env --allow-read --allow-net --output ytd src/mod.ts && du -h ytd",
     "test": "deno test --allow-run --allow-read --allow-write",
-    "test-update": "deno test --allow-run --allow-read --allow-write -- --update", // update snapshot tests
+    "test-update": "deno test --allow-run --allow-read --allow-write -- --update",
     "lock": "deno cache --import-map=deno.json --lock-write src/mod.ts",
     "lock-reload": "deno cache --reload --lock=deno.lock deno.json"
   }
