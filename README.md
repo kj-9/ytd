@@ -24,5 +24,5 @@ Options:
 
   -h, --help     - Show this help.                            
   -V, --version  - Show the version number for this program.  
-  -d, --debug    - Enable debug output.                       
+  -d, --debug    - Enable debug output.
 ```

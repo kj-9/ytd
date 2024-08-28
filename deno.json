@@ -13,7 +13,7 @@
   "tasks": {
     "lint": "deno fmt --check",
     "fmt": "deno fmt",
-    "run": "deno run --allow-run --allow-env --allow-read --allow-net src/mod.ts",
+    "run": "deno run --allow-run --allow-env --allow-read --allow-net src/cli.ts",
     "build": "deno compile --allow-run --allow-env --allow-read --allow-net --output ytd src/mod.ts && du -h ytd",
     "lock": "deno cache --import-map=deno.json --lock-write src/mod.ts",
     "lock-reload": "deno cache --reload --lock=deno.lock deno.json"
