@@ -25,11 +25,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       # TODO: check version at deno.json and the tag
-      #- name: Update constants
-      #  run: |
-      #    RELEASE_TAG=${GITHUB_REF#refs/*/}
-      #    sed -i '' -e "s/export const Version.*/export const Version = '${RELEASE_TAG}';/g" src/constants.ts
-      #    sed -i '' -e "s/export const Platform.*/export const Platform = '${{ runner.os }}';/g" src/constants.ts
       - uses: denoland/setup-deno@v1
         with:
           deno-version: ${{ env.DENO_VERSION }}
@@ -55,17 +50,6 @@ jobs:
         with:
           title: ${{ github.ref_name }}
           tag: ${{ github.ref_name }}
-      # - name: Create Release
-      #   id: create-release
-      #   uses: ncipollo/release-action@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     artifacts: "${{ env.APP_NAME }}_*"
-      #     body: "Release"
-      #     draft: false # TODO: check tag and if it is a pre-release or not
-      #     generateReleaseNotes: true
-
 
   upload-release:
     runs-on: ubuntu-latest
@@ -96,14 +80,3 @@ jobs:
           tag: ${{ github.ref }}
           overwrite: true
           #body: 
-
-      # - name: Upload Release Asset
-      #   id: upload-release-asset
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     upload_url: ${{ steps.vars.outputs.upload_url }}
-      #     asset_path: ${{ env.APP_NAME }}_${{ matrix.os }}
-      #     asset_name: ${{ env.APP_NAME }}_${{ matrix.asset_name_suffix }}
-      #     asset_content_type: ${{ matrix.asset_content_type }}
