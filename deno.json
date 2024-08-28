@@ -1,6 +1,6 @@
 {
   "name": "ytd",
-  "version": "0.0.0-a",
+  "version": "0.0.0-a1",
   "description": "Youtube Data API CLI and library for Deno",
   "exports": "./src/mod.ts",
   "fmt": {
