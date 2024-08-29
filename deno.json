@@ -1,5 +1,5 @@
 {
-  "name": "ytd",
+  "name": "@kj/ytd",
   "version": "0.0.0-a1",
   "description": "Youtube Data API CLI and library for Deno",
   "exports": "./src/mod.ts",
@@ -7,7 +7,7 @@
     "singleQuote": true
   },
   "imports": {
-    "std/": "https://deno.land/std@0.224.0/",
+    "@std/log": "jsr:@std/log@^0.224.6",
     "cliffy/": "https://deno.land/x/cliffy@v1.0.0-rc.4/"
   },
   "tasks": {

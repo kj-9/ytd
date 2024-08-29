@@ -1,10 +1,14 @@
-import * as log from 'std/log/mod.ts';
+import * as log from '@std/log';
 import logger from './logger.ts';
 import { playlistItems } from './youtube.ts';
 import config from '../../deno.json' with { type: 'json' };
 import { Command } from 'cliffy/command/mod.ts';
 
 const { name, version, description } = config;
+
+// name is @user/app so we need to extract the app name
+const [_, appName] = name.split('/');
+
 
 async function main(options: any, args: string[]) {
   logger().debug('Fetching playlist items...');
@@ -18,7 +22,7 @@ async function main(options: any, args: string[]) {
 
 export default async function command() {
   await new Command()
-    .name(name)
+    .name(appName)
     .version(version)
     .description(description)
     .option('-d, --debug', 'Enable debug output.')
