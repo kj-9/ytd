@@ -2,7 +2,7 @@ import * as log from '@std/log';
 import logger from './logger.ts';
 import { playlistItems } from './youtube.ts';
 import config from '../../deno.json' with { type: 'json' };
-import { Command } from 'cliffy/command/mod.ts';
+import { Command } from '@cliffy/command';
 
 const { name, version, description } = config;
 
