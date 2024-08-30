@@ -14,4 +14,8 @@ jobs:
   call-release:    
     needs: test
     uses: ./.github/workflows/release.yml
+  permissions:
+    packages: write
+    contents: write
+    id-token: write # The OIDC ID token is used for authentication with JSR.
     if: startsWith(github.ref, 'refs/tags/') # only run on tags
