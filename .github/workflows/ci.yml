@@ -10,6 +10,17 @@ jobs:
       - uses: denoland/setup-deno@v1
       - name: Run CI
         run: deno task lint && deno task test && deno task build
+      - name: check deno.json version
+        run: |
+          if [ "$(jq -r '.version' deno.json)" != "$(echo $GITHUB_REF | cut -d '/' -f 3)" ]; then
+            echo "Version mismatch between tag and deno.json"
+            echo "Tag: $(echo $GITHUB_REF | cut -d '/' -f 3)"
+            echo "deno.json: $(jq -r '.version' deno.json)"
+            exit 1
+          else
+            echo "Version match between tag and deno.json"
+          fi
+        if: startsWith(github.ref, 'refs/tags/') # only run on tags
 
   call-release:    
     needs: test
