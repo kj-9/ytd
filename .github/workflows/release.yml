@@ -1,9 +1,12 @@
 name: release
 
 on:
-  push:
+  workflow_run:
+    workflows: ["ci"]
     tags:
       - '*'
+    types: 
+      - completed
 
 permissions:
   packages: write
@@ -92,3 +95,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npx jsr publish
+
