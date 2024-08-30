@@ -10,3 +10,8 @@ jobs:
       - uses: denoland/setup-deno@v1
       - name: Run CI
         run: deno task lint && deno task test && deno task build
+
+  call-release:
+    needs: test
+    use: ./.github/workflows/release.yml
+    if: startsWith(github.ref, 'refs/tags/') # only run on tags

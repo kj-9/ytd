@@ -1,12 +1,7 @@
 name: release
 
 on:
-  workflow_run:
-    workflows: ["ci"]
-    tags:
-      - '*'
-    types: 
-      - completed
+  workflow_call
 
 permissions:
   packages: write
