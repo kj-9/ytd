@@ -30,7 +30,7 @@ jobs:
           deno-version: ${{ env.DENO_VERSION }}
       - run: |
           deno task build
-          xz -c ytd > "${{ env.APP_NAME }}_${{ matrix.os }}.xz"
+          xz -c ${{ env.APP_NAME }} > "${{ env.APP_NAME }}_${{ matrix.os }}.xz"
       - name: Create artifact
         uses: actions/upload-artifact@v3
         with:
