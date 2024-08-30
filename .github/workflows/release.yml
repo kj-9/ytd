@@ -22,7 +22,6 @@ jobs:
           - macOS-latest
     steps:
       - uses: actions/checkout@v4
-      # TODO: check version at deno.json and the tag
       - uses: denoland/setup-deno@v1
         with:
           deno-version: ${{ env.DENO_VERSION }}
