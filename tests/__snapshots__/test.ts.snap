@@ -4,7 +4,7 @@ snapshot[`should log help 1`] = `
 stdout:
 "
 Usage:   ytd <playlistId> <apiKey>
-Version: 0.0.0-a1                 
+Version: 0.0.0-a2                 
 
 Description:
 
