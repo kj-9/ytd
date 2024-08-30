@@ -9,7 +9,6 @@ const { name, version, description } = config;
 // name is @user/app so we need to extract the app name
 const [_, appName] = name.split('/');
 
-
 async function main(options: any, args: string[]) {
   logger().debug('Fetching playlist items...');
 
