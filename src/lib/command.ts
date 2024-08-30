@@ -16,7 +16,8 @@ async function main(options: any, args: string[]) {
     String(args[0]),
     String(args[1]),
   );
-  console.log(res);
+
+  console.log(JSON.stringify(res, null, 2));
 }
 
 export default async function command() {
