@@ -1,3 +1,7 @@
 import command from './lib/command.ts';
 
-command();
+// Run the command
+
+if (import.meta.main) {
+  await command();
+}
