@@ -2,7 +2,6 @@
 
 [![JSR](https://jsr.io/badges/@kj-9/ytd)](https://jsr.io/@kj-9/ytd)
 
-
 youtube data api cli tool and library for deno.
 
 ## Installation
@@ -17,9 +16,8 @@ youtube data api cli tool and library for deno.
 ### with Deno
 
 ```sh
-deno install -f -n ytd https://jsr.io/@kj-9/ytd/0.0.0-a2/src/cli.ts 
+deno install -g -n ytd https://jsr.io/@kj-9/ytd/0.0.0-a2/src/cli.ts
 ```
-
 
 ## Usage
 
