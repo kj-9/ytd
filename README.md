@@ -1,19 +1,29 @@
 # ytd
 
+[![JSR](https://jsr.io/badges/@kj-9/ytd)](https://jsr.io/@kj-9/ytd)
+
+
 youtube data api cli tool and library for deno.
 
 ## Installation
 
-**NOTE**: Before install this package, you should have this and that.
+### Standalone binary
 
 - Download standalone binary from
   [releases](https://github.com/kj-9/ytd/releases).
 - Move downloaded file to path
 - Or you can download source code and compile on your own.
 
+### with Deno
+
+```sh
+deno install -f -n ytd https://jsr.io/@kj-9/ytd/0.0.0-a2/src/cli.ts 
+```
+
+
 ## Usage
 
-```
+```sh
 Usage:   ytd <playlistId> <apiKey>
 Version: 0.0.0-a                  
 
