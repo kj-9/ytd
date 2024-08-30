@@ -16,7 +16,7 @@ youtube data api cli tool and library for deno.
 ### with Deno
 
 ```sh
-deno install -g -n ytd https://jsr.io/@kj-9/ytd/0.0.0-a2/src/cli.ts
+deno install --allow-net -g -n ytd https://jsr.io/@kj-9/ytd/0.0.0-a2/src/cli.ts
 ```
 
 ## Usage
@@ -41,3 +41,4 @@ Options:
 - bump version in `deno.json`
 - run `deno task test-update` to update snapshot tests if needed
 - create and push a tag
+\
