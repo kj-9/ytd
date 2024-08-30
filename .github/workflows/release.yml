@@ -1,7 +1,7 @@
 name: release
 
 on:
-  workflow_call
+  workflow_call # assumes triggered by semver tag
 
 permissions:
   packages: write
@@ -28,15 +28,17 @@ jobs:
       - run: |
           deno task build
           xz ${{ env.APP_NAME }}
+      
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: "${{ env.APP_NAME }}.xz"
-          asset_name: "${{ env.APP_NAME }}_${{ matrix.os }}.xz"
+          file: ${{ env.APP_NAME }}.xz
+          asset_name: ${{ env.APP_NAME }}_${{ matrix.os }}.xz
           tag: ${{ github.ref }}
           overwrite: true
-          #body: "This is my release text"
+          prerelease: ${{ contains(github.ref, '-') }} # check is github.ref_name is a prerelease
+          #body: "This is my release text" # seems cannot auto generate
 
   # see also: https://jsr.io/docs/publishing-packages#publishing-from-github-actions
   publish:
