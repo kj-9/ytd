@@ -1,6 +1,6 @@
 {
   "name": "@kj-9/ytd",
-  "version": "0.0.0-a3",
+  "version": "0.0.0-a4",
   "description": "Youtube Data API CLI and library for Deno",
   "exports": "./src/mod.ts",
   "fmt": {
