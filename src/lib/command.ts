@@ -20,8 +20,8 @@ async function main(options: any, args: string[]) {
   console.log(JSON.stringify(res, null, 2));
 }
 
-export default async function command() {
-  await new Command()
+export default function command() {
+  return new Command()
     .name(appName)
     .version(version)
     .description(description)
@@ -42,6 +42,6 @@ export default async function command() {
       });
 
       await main(options, args);
-    })
-    .parse(Deno.args);
+    });
+  //.parse(Deno.args);
 }
