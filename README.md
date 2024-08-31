@@ -1,3 +1,4 @@
+<!-- deno-fmt-ignore-file -->
 <!-- DO NOT EDIT README.md DIRECTLY, EDIT tests/readme_tests.ts AND RUN deno task test-update -->
 # ytd
 

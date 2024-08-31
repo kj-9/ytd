@@ -4,6 +4,7 @@ import command from '../src/lib/command.ts';
 // edit this template to update README.md file
 const readmeTemplate = ({ version, help }: { version: string; help: string }) =>
   `\
+<!-- deno-fmt-ignore-file -->
 <!-- DO NOT EDIT README.md DIRECTLY, EDIT tests/readme_tests.ts AND RUN deno task test-update -->
 # ytd
 
