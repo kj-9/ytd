@@ -1,5 +1,4 @@
 <!-- DO NOT EDIT README.md DIRECTLY, EDIT tests/readme_tests.ts AND RUN deno task test-update -->
-
 # ytd
 
 [![JSR](https://jsr.io/badges/@kj-9/ytd)](https://jsr.io/@kj-9/ytd)
@@ -24,6 +23,7 @@ deno install --allow-net -g -n ytd https://jsr.io/@kj-9/ytd/0.0.0-a5/src/cli.ts
 ## Usage
 
 ```sh
+
 Usage:   ytd <playlistId> <apiKey>
 Version: 0.0.0-a5                 
 
@@ -35,7 +35,8 @@ Options:
 
   -h, --help     - Show this help.                            
   -V, --version  - Show the version number for this program.  
-  -d, --debug    - Enable debug output.
+  -d, --debug    - Enable debug output.                       
+
 ```
 
 ## Development
